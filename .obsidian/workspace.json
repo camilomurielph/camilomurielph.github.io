@@ -194,20 +194,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f59a218d831f899b",
+  "active": "eb42f341e1f831b4",
   "lastOpenFiles": [
+    "public/blog/teach-courses/featured_hu_dcb0da645ef010b.webp",
+    "node_modules/@tailwindcss/oxide-win32-x64-msvc/package.json",
+    "node_modules/tapable/lib/SyncWaterfallHook.js",
+    "node_modules/tapable/lib/SyncLoopHook.js",
+    "node_modules/tapable/lib/SyncHook.js",
+    "node_modules/tapable/lib/SyncBailHook.js",
+    "node_modules/tapable/lib/HookCodeFactory.js",
+    "node_modules/@parcel/watcher-win32-x64/package.json",
+    "node_modules/is-glob/index.js",
+    "node_modules/is-glob/package.json",
+    "node_modules/picomatch/package.json",
     "public/events/example/featured.jpg",
     "content/notes/Mi Primera Nota.md",
-    "Tags",
-    "public/css/_entry.css",
-    "public/blog/index.xml",
-    "public/tags/tutorials/index.xml",
-    "public/tags/hugo/index.xml",
-    "public/tags/source-themes/index.xml",
-    "public/tags/second-brain/index.xml",
-    "public/courses/hugo-blox/guide/formatting/index.xml",
-    "public/tags/hugoblox/index.xml",
-    "public/tags/academic/index.xml",
     "public/publications/conference-paper/featured.jpg",
     "node_modules/@pagefind/windows-x64/README.md",
     "node_modules/preact/README.md",
@@ -240,7 +241,6 @@
     "resources/_gen/images/projects/pandas/featured_hu_fa7f663f63a7f6eb.webp",
     "public/projects/pandas/featured_hu_7070e56f5b374002.webp",
     "resources/_gen/images/projects/pandas/featured_hu_7070e56f5b374002.webp",
-    "resources/_gen/images/projects/pandas/featured_hu_c11b331bd096bf42.webp",
-    "resources/_gen/images/projects/pandas/featured_hu_755a3ba7d911aff9.png"
+    "resources/_gen/images/projects/pandas/featured_hu_c11b331bd096bf42.webp"
   ]
 }

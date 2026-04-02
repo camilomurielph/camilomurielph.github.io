@@ -45,10 +45,10 @@ hugoblox:
     colors_dark: {}
     # Optional: Semantic surface color overrides
     surfaces:
-      background: "#121212"
+      background: "#1a1a1a"
       foreground: "#FFFFFF"
       header:
-        background: ""
+        background: "#141414"
         foreground: ""
       footer:
         background: ""
