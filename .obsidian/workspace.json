@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "000 GUIA/000 - Home Guía.md",
+                "file": "content/logos/mareliz/index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "000 - Home Guía"
+              "title": "index"
             }
           }
         ],
@@ -212,12 +212,22 @@
   "active": "cab9812023399c98",
   "lastOpenFiles": [
     "000 GUIA/Notas/Plantilla Posts.md",
-    "README.md",
     "000 GUIA/000 - Home Guía.md",
     "content/logos/mareliz/index.md",
+    "content/logos/conference-paper/index.md",
+    "public/tags/marca/index.xml",
+    "public/tags/marca/page/1/index.html",
+    "public/tags/marca/page/1",
+    "public/tags/marca/page",
+    "public/tags/marca/index.html",
+    "public/tags/marca",
+    "public/tags/logo/index.xml",
+    "public/tags/logo/page/1/index.html",
+    "public/tags/logo/page/1",
+    "public/tags/logo/page",
+    "content/logos/conference-paper/featured.jpg",
+    "README.md",
     "000 GUIA/Notas/Añadir una imagen en tu Post.md",
-    "000 GUIA/Notas",
-    "000 GUIA",
     "public/logos/mareliz/ejemplo_hu_8bce1ccae2310a6a.webp",
     "public/logos/mareliz/ejemplo_hu_4a31b59b7866c8b2.webp",
     "resources/_gen/images/logos/mareliz/ejemplo_hu_4a31b59b7866c8b2.webp",
@@ -227,21 +237,11 @@
     "resources/_gen/images/logos/mareliz/ejemplo_hu_84091074b7535c49.webp",
     "content/logos/mareliz/ejemplo.jpg",
     "public/logos/mareliz/ejemplo.jpg",
-    "public/logos/mareliz/Free Plastic Cosmetic Bottle and  Deodorant Mockup.jpg",
     "content/logos/journal-article/index.md",
-    "resources/_gen/images/logos/mareliz",
     "content/logos/_index.md",
-    "content/logos/conference-paper/index.md",
     "content/logos/preprint/index.md",
     "content/notes/Mi Primera Nota.md",
-    "public/logos/mareliz/index.html",
-    "public/logos/mareliz/sin-titulo/index.html",
-    "public/logos/mareliz/sin-titulo",
-    "public/logos/mareliz",
-    "content/logos/conference-paper/conference-paper.pdf",
     "content/logos/Sin título.md",
-    "content/logos/mareliz",
-    "public/logos/sin-titulo/index.html",
     "content/_index.md",
     "content/authors/_index.md",
     "content/blog/notebook-onboarding/index.md",
@@ -255,7 +255,6 @@
     "node_modules/postcss-selector-parser/API.md",
     "node_modules/@jridgewell/trace-mapping/README.md",
     "node_modules/@tailwindcss/typography/README.md",
-    "node_modules/jiti/README.md",
-    "node_modules/tapable/README.md"
+    "node_modules/jiti/README.md"
   ]
 }

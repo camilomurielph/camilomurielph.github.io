@@ -2,6 +2,8 @@
 title: Titulo aquí
 date: 2026-04-01
 featured: false
+tags:
+  - Tag-de-ejemplo
 ---
 > Esta es una plantilla para el Index de tu Post.
 > Aquí va todo el texto en markdown y el contenido del post.
