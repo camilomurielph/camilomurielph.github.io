@@ -11,10 +11,14 @@
             "id": "f59a218d831f899b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "index.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "index"
             }
           }
         ]
@@ -190,8 +194,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "eb42f341e1f831b4",
+  "active": "f59a218d831f899b",
   "lastOpenFiles": [
+    "index.md",
     "content/authors/_index.md",
     "content/_index.md",
     "node_modules/picomatch/README.md",
@@ -236,7 +241,6 @@
     "node_modules/preact/README.md",
     "node_modules/enhanced-resolve/README.md",
     "node_modules/@parcel/watcher/README.md",
-    "node_modules/postcss-selector-parser/CHANGELOG.md",
-    "node_modules/postcss-selector-parser/API.md"
+    "node_modules/postcss-selector-parser/CHANGELOG.md"
   ]
 }
