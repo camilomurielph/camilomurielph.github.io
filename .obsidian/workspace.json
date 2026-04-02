@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pagina-web/index.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               },
@@ -194,8 +194,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "eb42f341e1f831b4",
+  "active": "f59a218d831f899b",
   "lastOpenFiles": [
+    "pagina-web/index.md",
     "quartz/content/index.md",
     "quartz/content",
     "quartz/Nueva carpeta",
@@ -231,7 +232,6 @@
     "quartz/node_modules/@parcel/watcher/node_modules/picomatch/README.md",
     "quartz/node_modules/vfile/node_modules/vfile-message/readme.md",
     "quartz/node_modules/vfile/node_modules/unist-util-stringify-position/readme.md",
-    "quartz/node_modules/speech-rule-engine/node_modules/commander/Readme.md",
     "quartz/node_modules/js-binary-schema-parser/example/horses.gif",
     "quartz/node_modules/js-binary-schema-parser/example/dog.gif",
     "quartz/node_modules/js-binary-schema-parser/example/box.gif",
