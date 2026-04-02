@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "pagina-web/index.md",
                 "mode": "source",
                 "source": false
               },
@@ -196,6 +196,7 @@
   },
   "active": "f59a218d831f899b",
   "lastOpenFiles": [
+    "index.md",
     "pagina-web/index.md",
     "quartz/content/index.md",
     "quartz/content",
@@ -231,7 +232,6 @@
     "quartz/node_modules/hast-util-from-html/node_modules/@types/unist/README.md",
     "quartz/node_modules/@parcel/watcher/node_modules/picomatch/README.md",
     "quartz/node_modules/vfile/node_modules/vfile-message/readme.md",
-    "quartz/node_modules/vfile/node_modules/unist-util-stringify-position/readme.md",
     "quartz/node_modules/js-binary-schema-parser/example/horses.gif",
     "quartz/node_modules/js-binary-schema-parser/example/dog.gif",
     "quartz/node_modules/js-binary-schema-parser/example/box.gif",
