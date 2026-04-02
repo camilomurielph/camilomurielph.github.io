@@ -64,7 +64,7 @@ Below is a live example of a notebook rendered right here in this post. Notice h
 ## Next steps
 
 - **Try it out:** Drop one of your existing notebooks into this site and see how it looks.
-- **Link your papers:** Use the Embed shortcode to link your notebook to your latest arXiv preprint or GitHub repository.
+- **Link your logos:** Use the Embed shortcode to link your notebook to your latest arXiv preprint or GitHub repository.
 - **Get help:** Join the community on [Discord](https://discord.gg/z8wNYzb) or check the [documentation](https://docs.hugoblox.com).
 
 Happy researching! 🚀

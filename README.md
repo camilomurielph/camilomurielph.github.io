@@ -53,7 +53,7 @@ Most CVs are static PDFs that get lost in the pile. This is an **intelligent por
 
 - Students and grads applying to top labs and industry roles
 - Researchers who want a living, citable portfolio
-- Faculty/PIs showcasing publications, talks, and group news
+- Faculty/PIs showcasing logos, talks, and group news
 
 ---
 

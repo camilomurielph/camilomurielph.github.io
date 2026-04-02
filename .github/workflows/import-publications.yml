@@ -1,5 +1,5 @@
-# Hugo Blox GitHub Action to convert Bibtex publications to Markdown-based webpages
-name: Import Publications From Bibtex
+# Hugo Blox GitHub Action to convert Bibtex logos to Markdown-based webpages
+name: Import logos From Bibtex
 
 # Require permission to create a PR (least privilege principle)
 permissions:
@@ -10,14 +10,14 @@ permissions:
 on:
   push:
     branches: ['main']
-    paths: ['publications.bib']
+    paths: ['logos.bib']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Prevent concurrent runs of this workflow
 concurrency:
-  group: import-publications-${{ github.ref }}
+  group: import-logos-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -53,29 +53,29 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install "academic${{ env.ACADEMIC_VERSION }}"
-      - name: Validate publications.bib file
-        if: ${{ hashFiles('publications.bib') != '' }}
+      - name: Validate logos.bib file
+        if: ${{ hashFiles('logos.bib') != '' }}
         run: |
-          if [ ! -f "publications.bib" ]; then
-            echo "❌ publications.bib file not found"
+          if [ ! -f "logos.bib" ]; then
+            echo "❌ logos.bib file not found"
             exit 1
           fi
-          echo "✅ publications.bib file found"
+          echo "✅ logos.bib file found"
           
       - name: Run Academic (Bibtex To Markdown Converter)
         # Check `.bib` file exists for case when action runs on `.bib` deletion
         # Note GH only provides hashFiles func in `steps.if` context, not `jobs.if` context
-        if: ${{ hashFiles('publications.bib') != '' }}
+        if: ${{ hashFiles('logos.bib') != '' }}
         run: |
           echo "🚀 Starting publication import..."
-          academic import publications.bib content/publication/ --compact --verbose
+          academic import logos.bib content/publication/ --compact --verbose
           echo "✅ Publication import completed successfully"
           
           # Verify that files were created
           if [ -d "content/publication" ] && [ "$(ls -A content/publication/)" ]; then
-            echo "📚 Publications imported: $(ls content/publication/ | wc -l) items"
+            echo "📚 logos imported: $(ls content/publication/ | wc -l) items"
           else
-            echo "⚠️ No publications were imported"
+            echo "⚠️ No logos were imported"
           fi
         continue-on-error: false
       - name: Create Pull Request
@@ -83,24 +83,24 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: 'feat(publications): import latest publications from bibtex'
-          title: 'HugoBlox Kit - Import latest publications from Bibtex'
+          commit-message: 'feat(logos): import latest logos from bibtex'
+          title: 'HugoBlox Kit - Import latest logos from Bibtex'
           body: |
             🔄 **Automated Publication Import**
 
-            This PR automatically imports the latest publications from `publications.bib` to `content/publication/`.
+            This PR automatically imports the latest logos from `logos.bib` to `content/publication/`.
 
             **Changes:**
             - 📚 Updated publication entries
             - 🏷️ Processed bibliographic data
 
             ---
-            将最新的出版物从`publications.bib`导入到`content/publication/`。
+            将最新的出版物从`logos.bib`导入到`content/publication/`。
 
             📖 [View Documentation](https://github.com/GetRD/academic-file-converter)
           base: main
-          labels: automated-pr, content, publications
-          branch: hugoblox-import-publications-${{ github.run_id }}
+          labels: automated-pr, content, logos
+          branch: hugoblox-import-logos-${{ github.run_id }}
           delete-branch: true
           draft: false
       - name: Check outputs

@@ -18,7 +18,7 @@ sections:
       # Show a call-to-action button under your biography? (optional)
       button:
         text: Contáctame
-        url: uploads/resume.pdf
+        url: https://bit.ly/camilomurielwa
       headings:
         about: ''
         education: ''
@@ -37,36 +37,24 @@ sections:
       avatar:
         size: medium # Options: small (150px), medium (200px, default), large (320px), xl (400px), xxl (500px)
         shape: circle # Options: circle (default), square, rounded
-  - block: markdown
-    content:
-      title: '📚 My Research'
-      subtitle: ''
-      text: |-
-        Use this area to speak to your mission. I'm a research scientist in the Moonshot team at DeepMind. I blog about machine learning, deep learning, and moonshots.
-
-        I apply a range of qualitative and quantitative methods to comprehensively investigate the role of science and technology in the economy.
-
-        Please reach out to collaborate 😃
-    design:
-      columns: '1'
   - block: collection
-    id: papers
+    id: logos
     content:
-      title: Featured Publications
+      title: Logos que hablan por ti
       filters:
         folders:
-          - publications
+          - logos
         featured_only: true
     design:
       view: article-grid
       columns: 2
   - block: collection
     content:
-      title: Recent Publications
+      title: Recent logos
       text: ''
       filters:
         folders:
-          - publications
+          - logos
         exclude_featured: false
     design:
       view: citation
