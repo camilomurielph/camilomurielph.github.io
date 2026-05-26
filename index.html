@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Camilo Muriel — Portafolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    :root {
+      --bg:        #0f0f11;
+      --surface:   #18181c;
+      --surface2:  #212126;
+      --border:    rgba(255,255,255,0.07);
+      --border2:   rgba(255,255,255,0.13);
+      --accent:    #c8a96e;
+      --accent2:   #e8c98e;
+      --text:      #f0ece4;
+      --muted:     #888480;
+      --muted2:    #5a5754;
+      --nav-h:     64px;
+      --header-h:  72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    .app-header {
+      flex-shrink: 0;
+      height: var(--header-h);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .header-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .header-title {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .header-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ─── TABS ─── */
+    .tabs-bar {
+      flex-shrink: 0;
+      display: flex;
+      padding: 0 20px;
+      gap: 4px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs-bar::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex-shrink: 0;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      padding: 14px 16px 13px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px 2px 0 0;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .tab-btn.active { color: var(--accent2); }
+    .tab-btn.active::after { opacity: 1; }
+
+    /* ─── CONTENT AREA ─── */
+    .content-wrap {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tab-panel {
+      display: none;
+      height: 100%;
+      overflow-y: auto;
+      padding: 20px 20px 32px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--surface2) transparent;
+    }
+    .tab-panel.active { display: block; }
+    .tab-panel::-webkit-scrollbar { width: 3px; }
+    .tab-panel::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+    /* ─── SECTION HEADER ─── */
+    .section-header { margin-bottom: 20px; }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── PROJECT GRID ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* ─── PROJECT CARD ─── */
+    .project-card {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      animation: fadeUp 0.3s ease both;
+    }
+
+    .project-card:active { transform: scale(0.97); }
+    .project-card:hover { border-color: var(--border2); }
+
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--surface2);
+      position: relative;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .card-img-wrap img { transform: scale(1.03); }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted2);
+      font-size: 28px;
+    }
+
+    .card-body { padding: 10px 12px 12px; }
+
+    .card-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal-sheet {
+      background: var(--surface);
+      border-radius: 24px 24px 0 0;
+      border-top: 1px solid var(--border2);
+      max-height: 90dvh;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(30px);
+      transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .modal-overlay.open .modal-sheet { transform: translateY(0); }
+
+    .modal-handle {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      padding: 12px 0 8px;
+    }
+
+    .modal-handle-bar {
+      width: 36px;
+      height: 4px;
+      background: var(--border2);
+      border-radius: 2px;
+    }
+
+    .modal-top-bar {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 20px 16px;
+    }
+
+    .modal-category {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .modal-close {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      transition: color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .modal-close:active { color: var(--text); }
+
+    .modal-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 20px 40px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--surface2) transparent;
+    }
+    .modal-scroll::-webkit-scrollbar { width: 3px; }
+    .modal-scroll::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+    .modal-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      background: var(--surface2);
+      margin-bottom: 20px;
+    }
+
+    .modal-img-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--surface2);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted2);
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .modal-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .modal-desc p { margin-bottom: 12px; }
+    .modal-desc p:last-child { margin-bottom: 0; }
+    .modal-desc strong { color: var(--text); font-weight: 500; }
+    .modal-desc em { font-style: italic; color: var(--accent); }
+    .modal-desc a { color: var(--accent); text-decoration: underline; }
+    .modal-desc ul, .modal-desc ol { padding-left: 18px; margin-bottom: 12px; }
+    .modal-desc li { margin-bottom: 4px; }
+    .modal-desc h2, .modal-desc h3 {
+      color: var(--text);
+      font-weight: 500;
+      margin: 16px 0 8px;
+      font-size: 15px;
+    }
+
+    .md-toggle {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .md-toggle-btn {
+      background: transparent;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s, border-color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .md-toggle-btn:active { color: var(--text); }
+
+    .md-source {
+      display: none;
+      margin-top: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.6;
+    }
+
+    .md-source.visible { display: block; }
+
+    /* ─── ABOUT ─── */
+    .about-section { padding: 4px 0 32px; }
+
+    .about-avatar-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 2px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .about-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .about-role {
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .about-bio {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .about-bio p { margin-bottom: 12px; }
+
+    .skills-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted2);
+      margin-bottom: 12px;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .skill-tag {
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 400;
+      transition: border-color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .contact-link:active { border-color: var(--accent); }
+
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-link-info { flex: 1; }
+    .contact-link-label { font-size: 11px; color: var(--muted); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-card:nth-child(1)  { animation-delay: 0.04s; }
+    .project-card:nth-child(2)  { animation-delay: 0.08s; }
+    .project-card:nth-child(3)  { animation-delay: 0.12s; }
+    .project-card:nth-child(4)  { animation-delay: 0.16s; }
+    .project-card:nth-child(5)  { animation-delay: 0.20s; }
+    .project-card:nth-child(6)  { animation-delay: 0.24s; }
+    .project-card:nth-child(7)  { animation-delay: 0.28s; }
+    .project-card:nth-child(8)  { animation-delay: 0.32s; }
+    .project-card:nth-child(9)  { animation-delay: 0.36s; }
+    .project-card:nth-child(10) { animation-delay: 0.40s; }
+    .project-card:nth-child(11) { animation-delay: 0.44s; }
+    .project-card:nth-child(12) { animation-delay: 0.48s; }
+
+    /* ─── EMPTY STATE ─── */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--muted2);
+      gap: 12px;
+    }
+
+    .empty-state-icon { font-size: 36px; }
+    .empty-state-text { font-size: 13px; line-height: 1.6; max-width: 200px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (min-width: 600px) {
+      body {
+        align-items: center;
+      }
+      .app-header,
+      .tabs-bar,
+      .content-wrap {
+        width: 100%;
+        max-width: 540px;
+      }
+      .modal-overlay {
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-sheet {
+        max-width: 540px;
+        width: 100%;
+        border-radius: 24px;
+        margin-bottom: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-logo">
+      <span class="header-name">Camilo Muriel</span>
+      <span class="header-title">Diseñador &amp; Creador Visual</span>
+    </div>
+    <div class="header-dot"></div>
+  </header>
+
+  <nav class="tabs-bar" role="tablist" aria-label="Secciones del portafolio">
+    <button class="tab-btn active" data-tab="diseno" role="tab">Diseño Gráfico</button>
+    <button class="tab-btn"        data-tab="foto"   role="tab">Fotografía</button>
+    <button class="tab-btn"        data-tab="video"  role="tab">Audiovisual</button>
+    <button class="tab-btn"        data-tab="otros"  role="tab">Otros</button>
+    <button class="tab-btn"        data-tab="sobre"  role="tab">Sobre mí</button>
+  </nav>
+
+  <main class="content-wrap">
+
+    <section class="tab-panel active" id="panel-diseno" role="tabpanel">
+      <div class="section-header">
+        <h1 class="section-title">Diseño Gráfico</h1>
+        <p class="section-sub">Identidad visual &amp; branding</p>
+      </div>
+      <div class="projects-grid" id="grid-diseno"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-foto" role="tabpanel">
+      <div class="section-header">
+        <h1 class="section-title">Fotografía</h1>
+        <p class="section-sub">Retrato, producto &amp; editorial</p>
+      </div>
+      <div class="projects-grid" id="grid-foto"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-video" role="tabpanel">
+      <div class="section-header">
+        <h1 class="section-title">Audiovisual</h1>
+        <p class="section-sub">Video, dirección &amp; montaje</p>
+      </div>
+      <div class="projects-grid" id="grid-video"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-otros" role="tabpanel">
+      <div class="section-header">
+        <h1 class="section-title">Otros proyectos</h1>
+        <p class="section-sub">Experimentación &amp; varios</p>
+      </div>
+      <div class="projects-grid" id="grid-otros"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-sobre" role="tabpanel">
+      <div class="about-section">
+        <div class="about-avatar-placeholder">CM</div>
+        <h1 class="about-name">Camilo Muriel</h1>
+        <p class="about-role">Diseñador · Fotógrafo · Realizador</p>
+        <div class="about-bio">
+          <p>Creador visual con experiencia en diseño gráfico, fotografía y realización audiovisual. Me interesa construir piezas que comunican con claridad y tienen carácter propio.</p>
+          <p>Trabajo desde Cali, Colombia, con clientes y proyectos que valoran la identidad, la coherencia visual y la narrativa.</p>
+        </div>
+        <p class="skills-label">Disciplinas</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Identidad visual</span>
+          <span class="skill-tag">Branding</span>
+          <span class="skill-tag">Fotografía editorial</span>
+          <span class="skill-tag">Retrato</span>
+          <span class="skill-tag">Dirección de video</span>
+          <span class="skill-tag">Motion</span>
+          <span class="skill-tag">Montaje</span>
+        </div>
+        <p class="skills-label">Contacto</p>
+        <div class="contact-links">
+          <a href="mailto:camilo@ejemplo.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            <div class="contact-link-info">
+              <div>camilo@ejemplo.com</div>
+              <div class="contact-link-label">Correo electrónico</div>
+            </div>
+          </a>
+          <a href="https://instagram.com/camilomurielph" target="_blank" class="contact-link">
+            <div class="contact-link-icon">📷</div>
+            <div class="contact-link-info">
+              <div>@camilomurielph</div>
+              <div class="contact-link-label">Instagram</div>
+            </div>
+          </a>
+          <a href="https://camilomurielph.github.io/portafolio/" target="_blank" class="contact-link">
+            <div class="contact-link-icon">🌐</div>
+            <div class="contact-link-info">
+              <div>camilomurielph.github.io/portafolio</div>
+              <div class="contact-link-label">Sitio web</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Proyecto">
+    <div class="modal-sheet">
+      <div class="modal-handle"><div class="modal-handle-bar"></div></div>
+      <div class="modal-top-bar">
+        <span class="modal-category" id="modal-category"></span>
+        <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-scroll">
+        <div id="modal-img-wrap"></div>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-desc" id="modal-desc"></div>
+        <div class="md-toggle" id="md-toggle">
+          <button class="md-toggle-btn" id="md-toggle-btn">
+            <span>{ }</span> Ver markdown
+          </button>
+          <pre class="md-source" id="md-source"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* ═══════════════════════════════════════════════════════════════
+     DATOS DE PROYECTOS — vienen de proyectos.json
+     ─────────────────────────────────────────────────────────────
+     Para agregar o editar proyectos NO toques este archivo.
+     Abre proyectos.json y edita allí. Cada proyecto tiene:
+       - titulo     : nombre del proyecto
+       - categoria  : etiqueta visible en el card y en la ficha
+       - imagen     : ruta relativa (ej: "assets/mareliz.jpg")
+                      si la imagen no existe se muestra un placeholder
+       - descripcion: texto en Markdown (negritas, cursivas, listas…)
+  ═══════════════════════════════════════════════════════════════ */
+
+  let proyectos = {};
+
+  const categoryLabels = {
+    diseno: "Diseño Gráfico",
+    foto:   "Fotografía",
+    video:  "Audiovisual",
+    otros:  "Otros proyectos"
+  };
+
+  const icons = {
+    diseno: "✦",
+    foto:   "◉",
+    video:  "▶",
+    otros:  "◈"
+  };
+
+  function buildGrid(tabKey) {
+    const grid = document.getElementById(`grid-${tabKey}`);
+    if (!grid) return;
+    const items = proyectos[tabKey] || [];
+
+    if (items.length === 0) {
+      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+        <div class="empty-state-icon">○</div>
+        <p class="empty-state-text">Proyectos próximamente</p>
+      </div>`;
+      return;
+    }
+
+    grid.innerHTML = items.map((p, i) => `
+      <div class="project-card" data-tab="${tabKey}" data-index="${i}" role="button" tabindex="0" aria-label="Ver ${p.titulo}">
+        <div class="card-img-wrap">
+          ${p.imagen
+            ? `<img src="${p.imagen}" alt="${p.titulo}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+            : ''
+          }
+          <div class="card-img-placeholder" style="${p.imagen ? 'display:none' : ''}">${icons[tabKey] || '◇'}</div>
+        </div>
+        <div class="card-body">
+          <div class="card-label">${p.categoria}</div>
+          <div class="card-title">${p.titulo}</div>
+        </div>
+      </div>
+    `).join('');
+
+    grid.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.tab, +card.dataset.index));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(card.dataset.tab, +card.dataset.index);
+        }
+      });
+    });
+  }
+
+  function mostrarError() {
+    ['diseno','foto','video','otros'].forEach(tab => {
+      const grid = document.getElementById(`grid-${tab}`);
+      if (grid) grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+        <div class="empty-state-icon">○</div>
+        <p class="empty-state-text">No se pudo cargar proyectos.json</p>
+      </div>`;
+    });
+  }
+
+  fetch('proyectos.json')
+    .then(r => {
+      if (!r.ok) throw new Error('No se encontró proyectos.json');
+      return r.json();
+    })
+    .then(data => {
+      proyectos = data;
+      Object.keys(categoryLabels).forEach(buildGrid);
+    })
+    .catch(() => mostrarError());
+
+  /* ═══ TABS ════════════════════════════════════════════════ */
+
+  const tabBtns   = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(`panel-${target}`)?.classList.add('active');
+    });
+  });
+
+  /* ═══ MODAL ════════════════════════════════════════════════ */
+
+  const modal        = document.getElementById('modal');
+  const modalClose   = document.getElementById('modal-close');
+  const modalCat     = document.getElementById('modal-category');
+  const modalImgWrap = document.getElementById('modal-img-wrap');
+  const modalTitle   = document.getElementById('modal-title');
+  const modalDesc    = document.getElementById('modal-desc');
+  const mdToggleBtn  = document.getElementById('md-toggle-btn');
+  const mdSource     = document.getElementById('md-source');
+  let mdVisible      = false;
+
+  function openModal(tabKey, index) {
+    const p = proyectos[tabKey][index];
+
+    modalCat.textContent = categoryLabels[tabKey] || tabKey;
+    modalTitle.textContent = p.titulo;
+
+    if (p.imagen) {
+      modalImgWrap.innerHTML = `<img class="modal-img" src="${p.imagen}" alt="${p.titulo}">`;
+    } else {
+      modalImgWrap.innerHTML = `<div class="modal-img-placeholder">${icons[tabKey] || '◇'}</div>`;
+    }
+
+    const raw = p.descripcion || '';
+    modalDesc.innerHTML = typeof marked !== 'undefined' ? marked.parse(raw) : raw.replace(/\n/g, '<br>');
+    mdSource.textContent = raw;
+    mdSource.classList.remove('visible');
+    mdToggleBtn.innerHTML = '<span>{ }</span> Ver markdown';
+    mdVisible = false;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+  mdToggleBtn.addEventListener('click', () => {
+    mdVisible = !mdVisible;
+    mdSource.classList.toggle('visible', mdVisible);
+    mdToggleBtn.innerHTML = mdVisible
+      ? '<span>{ }</span> Ocultar markdown'
+      : '<span>{ }</span> Ver markdown';
+  });
+
+  let touchStartY = 0;
+  const sheet = document.querySelector('.modal-sheet');
+
+  sheet.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+  sheet.addEventListener('touchend', e => {
+    if (e.changedTouches[0].clientY - touchStartY > 80) closeModal();
+  }, { passive: true });
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+
+</body>
+</html>
